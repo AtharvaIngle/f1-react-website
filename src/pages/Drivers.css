@@ -1,0 +1,44 @@
+/* Drivers.css */
+
+.drivers-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px; /* Adjust as needed */
+  padding: 20px;
+}
+
+.driver-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  width: 200px; /* Fixed width for uniformity */
+  padding: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.driver-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.driver-card img {
+  width: 150px; /* Fixed width for uniformity */
+  height: 150px; /* Fixed height for uniformity */
+  object-fit: cover; /* Ensure images cover the specified area */
+  border-radius: 10px;
+}
+
+.driver-card p {
+  margin-top: 10px;
+  font-size: 1rem;
+  color: #333;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 20px;
+  font-size: 2.5rem;
+  color: #FFDFD6; /* A light, fresh color */
+}

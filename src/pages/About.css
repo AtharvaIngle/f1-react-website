@@ -1,0 +1,27 @@
+.about-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    background: linear-gradient(135deg, #F5F7F8, #F8F9F9);
+    color: #333;
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+}
+
+h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: #E10600;
+}
+
+p {
+    font-size: 1.2rem;
+    margin: 15px 0;
+    color: #7F8C8D;
+}
+
+strong {
+    color: #C0392B;
+}

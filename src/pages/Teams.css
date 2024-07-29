@@ -1,0 +1,158 @@
+/* src/pages/Teams.css */
+
+.teams-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  h1 {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #333;
+    background: linear-gradient(90deg, #ff6f61, #fcb045);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    margin-bottom: 20px;
+    animation: slideInFromLeft 1s ease-out, pulse 2s infinite;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Slide in from left animation */
+  @keyframes slideInFromLeft {
+    0% {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  
+  /* Pulse animation */
+  @keyframes pulse {
+    0% {
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    50% {
+      text-shadow: 2px 2px 8px rgba(255, 105, 180, 0.5);
+    }
+    100% {
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+  }
+  
+  .teams {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  .team-card {
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    width: 200px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    animation: bounceIn 0.5s ease-out;
+  }
+  
+  .team-card:hover {
+    transform: scale(1.05);
+    background-color: #e0e0e0;
+  }
+  
+  .team-card img {
+    border-radius: 10px;
+    object-fit: cover;
+    width: 100%;
+    height: 120px;
+    transition: transform 0.3s ease;
+  }
+  
+  .team-card h3 {
+    margin: 10px 0;
+    color: #333;
+  }
+  
+  .team-card p {
+    color: #666;
+    font-size: 14px;
+  }
+  
+  .team-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.1);
+    transition: opacity 0.3s ease;
+    z-index: 0;
+  }
+  
+  .team-card:hover::before {
+    opacity: 0;
+  }
+  
+  .team-card.origin-color {
+    background-color: var(--team-origin-color, #f0f0f0);
+  }
+  
+  .team-card.origin-color::before {
+    background: rgba(0, 0, 0, 0.15);
+  }
+  
+  /* Bounce In Animation */
+  @keyframes bounceIn {
+    0% {
+      opacity: 0;
+      transform: scale(0.3);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  /* Card Hover Image Animation */
+  .team-card:hover img {
+    transform: scale(1.1);
+  }
+  
+  /* Fade In Animation */
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  .teams-container {
+    animation: fadeIn 1s ease-in;
+  }
+  
+  @media (max-width: 768px) {
+    .team-card {
+      width: 45%;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .team-card {
+      width: 100%;
+    }
+  }
+  

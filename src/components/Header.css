@@ -1,0 +1,28 @@
+header {
+  background-color: #ff1c1c;
+  color: white;
+  padding: 1rem 0;
+  text-align: center;
+}
+
+
+header nav {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+header nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: color 0.3s;
+}
+
+header nav a.active {
+  font-weight: bold;
+}
+
+header nav a:hover {
+  color: #ffcccc;
+}
