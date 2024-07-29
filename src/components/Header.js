@@ -12,6 +12,7 @@ const Header = () => {
         <NavLink to="/teams">Teams</NavLink>
         <NavLink to="/game">Game</NavLink>
         <NavLink to="/about">About</NavLink>
+        <NavLink to="/news">News</NavLink>
       </nav>
       {/* <div className="car-container">
         <img src="/car.png" alt="Moving Car" className="moving-car" />

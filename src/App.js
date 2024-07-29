@@ -7,6 +7,7 @@ import Drivers from './pages/Drivers';
 import DriverDetail from './pages/DriverDetail';
 import Racetracks from './pages/Racetracks';
 import Teams from './pages/Teams';
+import News from './News';
 
 import Game from './pages/Game';
 import About from './pages/About';
@@ -24,7 +25,7 @@ const App = () => {
             <Route path="/drivers/:driverId" element={<DriverDetail />} />
             <Route path="/racetracks" element={<Racetracks />} />
             <Route path="/teams" element={<Teams />} />
-            
+            <Route path="/news" component={News} />
             <Route path="/game" element={<Game />} />
             <Route path="/about" element={<About />} />
           </Routes>
