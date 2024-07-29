@@ -8,7 +8,7 @@ const News = () => {
     const [news, setNews] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const apiKey = '90b29a20d3554111ac2ae3973abee24b';  // Replace with your actual NewsAPI key
+    const apiKey = '90b29a20d3554111ac2ae3973abee24b'; 
   
     useEffect(() => {
       const fetchNews = async () => {
