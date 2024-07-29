@@ -5,11 +5,11 @@ import './Videos.css';
 const videos = [
     {
         title: 'Best Moments of Lewis Hamilton',
-        url: 'https://www.youtube.com/embed/KMzB_7xM2_c' // Replace with actual video IDs
+        url: 'https://www.youtube.com/embed/KMzB_7xM2_c' 
     },
     {
         title: 'Top Highlights of Max Verstappen',
-        url: 'https://www.youtube.com/embed/mgcOBxGcmmg' // Replace with actual video IDs
+        url: 'https://www.youtube.com/embed/mgcOBxGcmmg' 
     },
     // Add more video objects as needed
 ];
