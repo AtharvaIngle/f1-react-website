@@ -3,7 +3,7 @@
 import axios from 'axios';
 
 const API_BASE_URL = 'https://v1.formula-1.api-sports.io';
-const API_KEY = '83936e053d33798e4d38cfbb15d8e6a8';  // Replace with your actual API key
+const API_KEY = '83936e053d33798e4d38cfbb15d8e6a8';  
 
 const api = axios.create({
   baseURL: API_BASE_URL,
