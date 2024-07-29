@@ -8,8 +8,8 @@ import DriverDetail from './pages/DriverDetail';
 import Racetracks from './pages/Racetracks';
 import Teams from './pages/Teams';
 import News from './pages/News';
-import Standings from './pages/Standings'; // Add this line
-import Videos from './pages/Videos'; // Add this line
+import Standings from './pages/Standings';
+import Videos from './pages/Videos'; 
 
 import Game from './pages/Game';
 import About from './pages/About';
