@@ -12,6 +12,7 @@ const Home = () => {
     leclerc:'https://upload.wikimedia.org/wikipedia/commons/6/62/F12019_Leclerc_Schloss_Gabelhofen.jpg',
     piastri:'https://upload.wikimedia.org/wikipedia/commons/c/ce/Oscar_Piastri_Spa_%28cropped%29.jpg',
     sainz:'https://upload.wikimedia.org/wikipedia/commons/7/76/Carlos_Sainz_jr.JPG',
+    hamilton:'https://upload.wikimedia.org/wikipedia/commons/1/18/Lewis_Hamilton_2016_Malaysia_2.jpg',
   };
 
   
@@ -43,6 +44,7 @@ const Home = () => {
       <div className="fade-in">
         <h1>Welcome to the F1 Website</h1>
         <p>Explore the world of Formula 1 racing!</p>
+        
 
         <section>
           <h2>Top Drivers</h2>

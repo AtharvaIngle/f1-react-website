@@ -1,6 +1,9 @@
 import React, { useEffect } from 'react';
 import './Game.css';
 import p5 from 'p5';
+import carImagePath from './f1_car.png'; // Ensure this path is correct
+import obstacle1ImagePath from './obstacle1.png'; // Ensure this path is correct
+import obstacle2ImagePath from './obstacle2.png'; // Ensure this path is correct
 
 const Game = () => {
   useEffect(() => {
@@ -18,28 +21,40 @@ const Game = () => {
 // p5.js sketch function
 const sketch = (p) => {
   let car;
-  let road;
   let obstacles = [];
-  let frameCount = 0;
+  let carImage;
+  let obstacle1Image;
+  let obstacle2Image;
+  let frameCount = 0; // Initialize frameCount
+  let score = 0; // Initialize score
+
+  p.preload = () => {
+    carImage = p.loadImage(carImagePath);
+    obstacle1Image = p.loadImage(obstacle1ImagePath);
+    obstacle2Image = p.loadImage(obstacle2ImagePath);
+  };
 
   p.setup = () => {
     p.createCanvas(800, 600).parent('gameCanvas');
-    road = new Road(p);
-    car = new Car(p);
+    car = new Car(p, carImage);
 
-    // Create some obstacles
+    // Create some obstacles with different types
     for (let i = 0; i < 5; i++) {
-      obstacles.push(new Obstacle(p));
+      let obstacleType = p.random() > 0.5 ? obstacle1Image : obstacle2Image;
+      obstacles.push(new Obstacle(p, obstacleType));
     }
   };
 
   p.draw = () => {
-    p.background(200, 220, 255); // Sky blue background
-    road.show();
-    car.update();
-    car.show();
-    car.checkEdges();
-    
+    // Draw the beach background
+    drawBeachBackground(p);
+
+    // Update frame count and score
+    frameCount++;
+    if (frameCount % 60 === 0) { // Every second
+      score++;
+    }
+
     // Draw and move obstacles
     for (let obstacle of obstacles) {
       obstacle.update();
@@ -52,51 +67,59 @@ const sketch = (p) => {
       }
     }
 
-    // Update the score and frame count
-    frameCount++;
-    if (frameCount % 60 === 0) { // Every second
-      car.score++;
-    }
+    car.update();
+    car.show();
+    car.checkEdges();
+
+    // Update the score display
     p.fill(0);
     p.textSize(24);
-    p.text(`Score: ${car.score}`, 10, 30);
+    p.text(`Score: ${score}`, 10, 30);
   };
 
-  class Road {
-    constructor(p) {
-      this.p = p;
-      this.color = 'white';
-    }
-
-    show() {
-      this.p.fill(this.color);
-      this.p.rect(0, 0, this.p.width, this.p.height);
-    }
-  }
+  const drawBeachBackground = (p) => {
+    // Sky
+    p.background(135, 206, 235); // Light blue sky
+    // Sand
+    p.fill(238, 214, 175); // Sandy beach color
+    p.noStroke();
+    p.rect(0, 0, p.width, p.height); // Cover the entire canvas with the sandy color
+  };
 
   class Car {
-    constructor(p) {
+    constructor(p, img) {
       this.p = p;
       this.x = this.p.width / 2;
-      this.y = this.p.height - 60;
+      this.y = this.p.height - 100;
       this.size = 50;
       this.speed = 5;
-      this.score = 0;
+      this.img = img;
     }
 
     update() {
-      if (this.p.keyIsDown(this.p.LEFT_ARROW)) {
+      if (this.p.keyIsDown(this.p.LEFT_ARROW) || this.p.keyIsDown(65)) {
         this.x -= this.speed;
       }
-      if (this.p.keyIsDown(this.p.RIGHT_ARROW)) {
+      if (this.p.keyIsDown(this.p.RIGHT_ARROW) || this.p.keyIsDown(68)) {
         this.x += this.speed;
       }
+      if (this.p.keyIsDown(this.p.UP_ARROW) || this.p.keyIsDown(87)) {
+        this.y -= this.speed;
+      }
+      if (this.p.keyIsDown(this.p.DOWN_ARROW) || this.p.keyIsDown(83)) {
+        this.y += this.speed;
+      }
       this.x = this.p.constrain(this.x, 0, this.p.width - this.size);
+      this.y = this.p.constrain(this.y, 0, this.p.height - this.size);
     }
 
     show() {
-      this.p.fill('red');
-      this.p.rect(this.x, this.y, this.size, this.size);
+      if (this.img) {
+        this.p.image(this.img, this.x, this.y, this.size, this.size);
+      } else {
+        this.p.fill('red');
+        this.p.rect(this.x, this.y, this.size, this.size);
+      }
     }
 
     checkEdges() {
@@ -105,6 +128,12 @@ const sketch = (p) => {
       }
       if (this.x > this.p.width - this.size) {
         this.x = this.p.width - this.size;
+      }
+      if (this.y < 0) {
+        this.y = 0;
+      }
+      if (this.y > this.p.height - this.size) {
+        this.y = this.p.height - this.size;
       }
     }
 
@@ -119,12 +148,13 @@ const sketch = (p) => {
   }
 
   class Obstacle {
-    constructor(p) {
+    constructor(p, img) {
       this.p = p;
       this.x = p.random(p.width);
       this.y = p.random(-500, -50);
       this.size = 50;
       this.speed = p.random(2, 5);
+      this.img = img;
     }
 
     update() {
@@ -136,8 +166,12 @@ const sketch = (p) => {
     }
 
     show() {
-      this.p.fill('black');
-      this.p.rect(this.x, this.y, this.size, this.size);
+      if (this.img) {
+        this.p.image(this.img, this.x, this.y, this.size, this.size);
+      } else {
+        this.p.fill('black');
+        this.p.rect(this.x, this.y, this.size, this.size);
+      }
     }
   }
 };
